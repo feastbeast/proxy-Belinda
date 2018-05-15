@@ -4,3 +4,6 @@ node_modules/
 ## Compiled files ##
 public/transpiled
 public/app.js
+
+## New Relic ##
+newrelic_agent.log
