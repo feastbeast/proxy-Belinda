@@ -11,7 +11,7 @@ module.exports = (items) => `
   <script>
   ${items.map(item => `
   ReactDOM.hydrate(
-    React.createElement(Nearby, {restaurantId: window.location.href.split('/restaurants/')[1]}),
+    React.createElement(Nearby),
     document.getElementById('${item}')
   );`).join('\n')}
   </script>
