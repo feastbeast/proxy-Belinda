@@ -1,4 +1,4 @@
-require('newrelic');
+// require('newrelic');
 
 const express = require('express');
 const path = require('path');
@@ -6,9 +6,9 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-const clientBundles = './public/services';
-const serverBundles = './templates/services';
-const cssBundles = './public/css';
+const clientBundles = __dirname + '/public/services';
+const serverBundles = __dirname + '/templates/services';
+const cssBundles = __dirname + '/public/css';
 const serviceConfig = require('./service-config.json');
 const services = require('./loader.js')(clientBundles, serverBundles, cssBundles, serviceConfig);
 
@@ -32,6 +32,8 @@ const getCSS = (components) => {
   return Object.keys(components).filter(item => {
     return item.includes('css');
   }).map(item => {
+    // console.log('css item: ', item);
+    // console.log('css item value: ', components[item]);
     return components[item];
   });
 };
@@ -40,7 +42,7 @@ app.get('/restaurants/:id', (req, res) => {
   // let compon
   let components = renderComponents(services, {restaurantId: req.params.id});
   let css = getCSS(services);
-  // console.log(css);
+  // console.log('getCSS results: ', css);
   res.end(Layout(
     'Apateez',
     App(...components),

@@ -1,8 +1,6 @@
 module.exports = (items) => `
-  <script src="/lib/react.development.js"></script>
-  <script src="/lib/react-dom.development.js"></script>
-  <script src="/lib/jquery.min.js"></script>
-  <script src="/lib/materialize.min.js"></script>
+  <script src="/lib/react.production.min.js"></script>
+  <script src="/lib/react-dom.production.min.js"></script>
   
   ${items.map(item => `
     <script src="/services/${item}.js"></script>
@@ -11,7 +9,7 @@ module.exports = (items) => `
   <script>
   ${items.map(item => `
   ReactDOM.hydrate(
-    React.createElement(Nearby, {restaurantId: window.location.href.split('/restaurants/')[1]}),
+    React.createElement(Nearby, {restaurantId: window.location.href.split('/restaurants/')[1][0]}),
     document.getElementById('${item}')
   );`).join('\n')}
   </script>

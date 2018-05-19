@@ -1,0 +1,4 @@
+templates/services/*.js
+public/services/*.js
+public/css/*.css
+node_modules
