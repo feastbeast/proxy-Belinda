@@ -1,3 +1,5 @@
+const newrelic = require('newrelic');
+
 const fs = require('fs');
 const fetch = require('node-fetch');
 const Promise = require('bluebird');
@@ -7,15 +9,16 @@ const exists = Promise.promisify(fs.stat);
 const loadBundle = function(cache, item, filename) {
   // add a small delay to ensure pipe has closed
   setTimeout(() => {
-    console.log('loading:', filename);
+    // console.log('loading:', filename);
     cache[item] = require(filename).default;    
     // console.log(JSON.stringify(cache[item])); 
   }, 0);
 };
 
 const readBundle = function(cache, item, filename) {
-  console.log('reading', item, filename);
+  // console.log('reading', item, filename);
   cache[item + '-css'] = fs.readFileSync(filename, {encoding: 'utf8'});
+  // console.log(cache[item + '-css']);
 }
 
 const fetchBundles = (path, services, suffix = '', require = false, filetype = 'js') => {

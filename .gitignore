@@ -2,11 +2,16 @@
 node_modules/
 
 ## Compiled files ##
-public/transpiled
-public/app.js
+public/services/*.js
+templates/services/*.js
+public/css/*.css
 
 ## New Relic ##
 newrelic_agent.log
+newrelic.js
 
 ## DS Store ##
 */.DS_Store
+
+## Loader ##
+public/*.txt

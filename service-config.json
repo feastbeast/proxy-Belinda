@@ -1,3 +1,3 @@
 {
-  "nearby": "http://13.57.191.101:3004/restaurants/"
+  "nearby": "http://nearby-loadbalancer-1522111090.us-west-1.elb.amazonaws.com:3004/restaurants/"
 }
